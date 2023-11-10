@@ -68,7 +68,7 @@ export default {
         },
         {
           name: "Blog",
-          link: "/blogs",
+          link: "/posts",
         },
       ],
     };
