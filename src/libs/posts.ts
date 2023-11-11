@@ -55,7 +55,6 @@ export async function getPostData(id: string) {
     .use(html)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
-
   // Combine the data with the id and contentHtml
   return {
     id,
@@ -63,3 +62,9 @@ export async function getPostData(id: string) {
     ...(matterResult.data as { date: string; title: string }),
   };
 }
+
+// export async function getPostContent(id: string) {
+//   const res = await axios.get(`/posts/${id}.md`);
+//   const matterResult = matter(res.data);
+//   return matterResult.content;
+// }
