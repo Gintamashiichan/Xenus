@@ -1,77 +1,65 @@
-// import matter from 'gray-matter';
+import matter from "gray-matter";
+// import fs from 'fs';
+import { remark } from "remark";
+import html from "remark-html";
 
-// import { remark } from 'remark';
-// import html from 'remark-html';
+import axios from "axios";
 
-export function getSortedPostsData(): void {
+export async function getSortedPostsData() {
   // Get file names under /posts
-  const modules: Record<string, any> = {};
-
+  const allPostsData = [];
   const files = import.meta.glob("../../public/posts/*.md");
 
   for (const key in files) {
     const filename = key.match(/\/([^/]+)\.[a-z]+$/);
     if (filename !== null) {
-      modules[filename[1]] = files[key];
+      const res = await axios.get(`/posts/${filename[1]}.md`);
+      const matterResult = matter(res.data);
+      const postData = {
+        id: filename[1],
+        ...(matterResult.data as { date: string; title: string }),
+      };
+      allPostsData.push(postData);
     }
   }
-  // const matterResult = matter(`${import.meta.url}/posts/Hello World.md?url`);
-  // const allPostsData = fileNames.map((fileName) => {
-  //   // Remove ".md" from file name to get id
-  //   const id = fileName.replace(/\.md$/, '');
-
-  //   // Read markdown file as string
-  //   const fullPath = path.join(postsDirectory, fileName);
-  //   const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-  //   // Use gray-matter to parse the post metadata section
-  //
-
-  //   // Combine the data with the id
-  //   return {
-  //     id,
-  //     ...(matterResult.data as { date: string; title: string }),
-  //   };
-  // });
-  // const fileNames = import.meta.glob('../public/posts/*.md')
-  // // Sort posts by date
-  // return allPostsData.sort((a, b) => {
-  //   if (a.date < b.date) {
-  //     return 1;
-  //   } else {
-  //     return -1;
-  //   }
-  // });
+  return allPostsData.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 }
 
-// export function getAllPostIds() {
-//   const fileNames = fs.readdirSync(postsDirectory);
-//   return fileNames.map((fileName) => {
-//     return {
-//       params: {
-//         id: fileName.replace(/\.md$/, ''),
-//       },
-//     };
-//   });
-// }
+export function getAllPostIds() {
+  const files = import.meta.glob("../../public/posts/*.md");
 
-// export async function getPostData(id: string) {
-//   const fullPath = path.join(postsDirectory, `${id}.md`);
-//   const fileContents = fs.readFileSync(fullPath, 'utf8');
+  for (const key in files) {
+    const filename = key.match(/\/([^/]+)\.[a-z]+$/);
+    if (filename !== null) {
+      return {
+        params: {
+          id: filename[1],
+        },
+      };
+    }
+  }
+}
 
-//   // Use gray-matter to parse the post metadata section
-//   const matterResult = matter(fileContents);
+export async function getPostData(id: string) {
+  const res = await axios.get(`/posts/${id}.md`);
+  const matterResult = matter(res.data);
 
-//   // Use remark to convert markdown into HTML string
-//   const processedContent = await remark()
-//     .use(html)
-//     .process(matterResult.content);
-//   const contentHtml = processedContent.toString();
+  // Use remark to convert markdown into HTML string
+  const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content);
+  const contentHtml = processedContent.toString();
 
-//   // Combine the data with the id and contentHtml
-//   return {
-//     id,
-//     contentHtml,
-//     ...(matterResult.data as { date: string; title: string }),
-//   };
-// }
+  // Combine the data with the id and contentHtml
+  return {
+    id,
+    contentHtml,
+    ...(matterResult.data as { date: string; title: string }),
+  };
+}

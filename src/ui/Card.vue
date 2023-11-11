@@ -8,29 +8,33 @@
     </figure>
     <div class="card-body">
       <h2 class="card-title">
-        Shoes!
+        <!-- {{ $data.postData[0].id }} Bug -->
         <div class="badge badge-secondary">NEW</div>
       </h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
-      <div class="card-actions justify-end">
-        <div class="badge badge-outline">Fashion</div>
-        <div class="badge badge-outline">Products</div>
-      </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import NavBar from "../components/NavBar.vue";
 import Buttons from "../ui/Buttons.vue";
+import { getPostData } from "../libs/posts";
 
 export default {
   name: "Card",
+  data() {
+    return {
+      postData: new Array(),
+    };
+  },
   props: {
     id: String,
   },
   components: {
     NavBar,
     Buttons,
+  },
+  async mounted() {
+    this.postData.push(await getPostData(this.$props.id as string));
   },
 };
 </script>
