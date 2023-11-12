@@ -26,7 +26,7 @@ export default {
             <pre class="text-md mt-6">
 Student, Designer, and Gamer.
 Rookie Front-end Developer.
-Wanna know <a class="link no-underline hover:underline"><RouterLink to="/about">more about me</RouterLink></a>?
+Wanna know <a class="link no-underline hover:underline"><RouterLink to="/posts/about">more about me</RouterLink></a>?
             </pre>
             <a href="https://www.github.com/Gintamashiichan">
               <img

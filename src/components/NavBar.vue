@@ -64,7 +64,7 @@ export default {
         },
         {
           name: "About",
-          link: "/about",
+          link: "/posts/about",
         },
         {
           name: "Blog",
