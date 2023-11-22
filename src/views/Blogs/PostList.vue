@@ -1,9 +1,9 @@
 <template>
-  <div class="select-none h-full flex flex-col">
+  <div class="select-none h-full flex flex-col z-50">
     <NavBar />
   </div>
   <div class="select-none h-full w-full flex flex-row flex-wrap justify-center">
-    <Card class="w-1/4 m-4" v-for="i in $data.posts" :id="i.id" />
+    <Card class="w-1/4 m-4 max-sm:-z-50" v-for="i in $data.posts" :id="i.id" />
   </div>
 </template>
 

@@ -63,8 +63,7 @@ export async function getPostData(id: string) {
   };
 }
 
-// export async function getPostContent(id: string) {
-//   const res = await axios.get(`/posts/${id}.md`);
-//   const matterResult = matter(res.data);
-//   return matterResult.content;
-// }
+export async function getPostContent(id: string) {
+  const postData = await getPostData(id);
+  return postData.contentHtml as unknown as Document;
+}

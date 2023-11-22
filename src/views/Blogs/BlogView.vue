@@ -3,8 +3,8 @@
     <NavBar />
   </div>
   <div class="select-none h-full w-full flex flex-col items-center mx-auto">
-    <h2 class="text-3xl">{{ postData.title }}</h2>
-    <span>{{ postData.date }}</span>
+    <h1 class="text-3xl font-bold">{{ postData.title }}</h1>
+    <span class="mt-3 mb-8">{{ postData.date }}</span>
     <article class="prose lg:prose-xl">
       {{ contents?.body.innerText }}
     </article>
