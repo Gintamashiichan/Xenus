@@ -2,15 +2,23 @@
   <div v-if="postData" class="card w-96 bg-base-100 shadow-xl">
     <figure>
       <img
-        src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+        :src="postData.thumbnail || 'https://picsum.photos/500/300'"
         alt="Shoes"
+        loading="lazy"
       />
     </figure>
     <div class="card-body">
-      <h2 class="card-title">
+      <h2 class="card-title font-bold">
         <RouterLink :to="PostURL">{{ postData.title }}</RouterLink>
-        <div class="badge badge-secondary">NEW</div>
       </h2>
+      <span class="text-slate-500">{{
+        postData.description || "没有简介.."
+      }}</span>
+      <div class="card-actions justify-end">
+        <div class="badge badge-outline" v-for="tag in postData.tags">
+          {{ tag }}
+        </div>
+      </div>
     </div>
   </div>
   <div v-else>Loading...</div>

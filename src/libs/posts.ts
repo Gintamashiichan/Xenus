@@ -17,7 +17,13 @@ export async function getSortedPostsData() {
       const matterResult = matter(res.data);
       const postData = {
         id: filename[1],
-        ...(matterResult.data as { date: string; title: string }),
+        ...(matterResult.data as {
+          date: string;
+          title: string;
+          description: string | null;
+          tags: string[] | null;
+          thumbnail: string | null;
+        }),
       };
       allPostsData.push(postData);
     }
@@ -59,7 +65,13 @@ export async function getPostData(id: string) {
   return {
     id,
     contentHtml,
-    ...(matterResult.data as { date: string; title: string }),
+    ...(matterResult.data as {
+      date: string;
+      title: string;
+      description: string | null;
+      tags: string[] | null;
+      thumbnail: string | null;
+    }),
   };
 }
 
