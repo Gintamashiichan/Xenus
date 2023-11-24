@@ -2,7 +2,7 @@ import matter from "gray-matter";
 // import fs from 'fs';
 import { remark } from "remark";
 import html from "remark-html";
-
+import { marked } from "marked";
 import axios from "axios";
 
 export async function getSortedPostsData() {
@@ -77,5 +77,5 @@ export async function getPostData(id: string) {
 
 export async function getPostContent(id: string) {
   const postData = await getPostData(id);
-  return postData.contentHtml as unknown as Document;
+  return marked(postData.contentHtml);
 }
