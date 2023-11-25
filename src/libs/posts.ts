@@ -1,9 +1,16 @@
-import matter from "gray-matter";
-// import fs from 'fs';
-import { remark } from "remark";
-import html from "remark-html";
-import { marked } from "marked";
 import axios from "axios";
+
+import matter from "gray-matter";
+import { marked, MarkedExtension } from "marked";
+
+// Extentions
+import markedKatex from "marked-katex-extension";
+import { markedEmoji } from "marked-emoji";
+import markedAdmonition from "marked-admonition-extension";
+
+import { Octokit } from "@octokit/rest";
+
+import "marked-admonition-extension/dist/index.css";
 
 export async function getSortedPostsData() {
   // Get file names under /posts
@@ -57,11 +64,23 @@ export async function getPostData(id: string) {
   const matterResult = matter(res.data);
 
   // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
-  // Combine the data with the id and contentHtml
+  const octokit = new Octokit();
+  // Get all the emojis available to use on GitHub.
+  const resOctokit = await octokit.rest.emojis.get();
+  const emojis = resOctokit.data;
+
+  const octokitOptions = {
+    emojis,
+    unicode: false,
+  };
+  marked
+    .use(markedEmoji(octokitOptions))
+    .use(markedKatex())
+    .use(markedAdmonition as MarkedExtension);
+
+  const contentHtml = await marked(matterResult.content, {
+    async: true,
+  });
   return {
     id,
     contentHtml,
@@ -73,9 +92,4 @@ export async function getPostData(id: string) {
       thumbnail: string | null;
     }),
   };
-}
-
-export async function getPostContent(id: string) {
-  const postData = await getPostData(id);
-  return marked(postData.contentHtml);
 }
