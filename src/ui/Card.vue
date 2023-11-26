@@ -21,7 +21,6 @@
       </div>
     </div>
   </div>
-  <div v-else>Loading...</div>
 </template>
 <script lang="ts">
 import NavBar from "../components/NavBar.vue";

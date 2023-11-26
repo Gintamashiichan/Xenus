@@ -1,5 +1,5 @@
 <template>
-  <div class="flex max-w-full mx-32 my-8 max-sm:mx-8">
+  <div class="flex max-w-full mx-32 my-8 max-sm:mx-8 z-50">
     <div class="navbar-start">
       <span class="font-black text-4xl">Xenus</span>
     </div>

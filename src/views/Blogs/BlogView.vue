@@ -2,7 +2,9 @@
   <div class="select-none h-full flex flex-col">
     <NavBar />
   </div>
-  <div class="select-none h-full w-full flex flex-col items-center overflow-hidden">
+  <div
+    class="select-none h-full w-full flex flex-col items-center overflow-hidden"
+  >
     <h1 class="text-3xl font-bold">{{ postData.title }}</h1>
     <span class="mt-3 mb-8">{{ postData.date }}</span>
     <article class="prose lg:prose-xl max-w-full max-sm:px-8">

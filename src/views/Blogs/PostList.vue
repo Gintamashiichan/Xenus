@@ -1,9 +1,18 @@
 <template>
-  <div class="select-none h-full flex flex-col z-50">
+  <div class="select-none h-full flex flex-col">
     <NavBar />
   </div>
-  <div class="select-none h-full w-full flex flex-row flex-wrap justify-center">
-    <Card class="w-1/4 m-4 max-sm:-z-50" v-for="i in $data.posts" :id="i.id" />
+  <div
+    class="select-none h-full w-full flex flex-row flex-wrap justify-center"
+    v-if="posts"
+  >
+    <Card class="w-1/4 m-4" v-for="i in $data.posts" :id="i.id" />
+  </div>
+  <div
+    class="select-none h-full w-full flex flex-row flex-wrap justify-center"
+    v-else
+  >
+    <span className="loading loading-ring loading-lg"></span>
   </div>
 </template>
 
