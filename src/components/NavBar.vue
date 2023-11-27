@@ -63,12 +63,12 @@ export default {
           link: "/",
         },
         {
-          name: "About",
-          link: "/posts/about",
-        },
-        {
           name: "Blog",
           link: "/posts",
+        },
+        {
+          name: "Tags",
+          link: "/tags",
         },
       ],
     };

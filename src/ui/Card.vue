@@ -1,8 +1,8 @@
 <template>
-  <div v-if="postData" class="card w-96 bg-base-100 shadow-xl">
+  <div v-if="postData" class="card w-96 max-h-80 bg-base-100 shadow-xl">
     <figure>
       <img
-        :src="postData.thumbnail || 'https://picsum.photos/500/300'"
+        :src="postData.thumbnail || 'https://picsum.photos/1024/900'"
         alt="Shoes"
         loading="lazy"
       />
@@ -15,8 +15,8 @@
         postData.description || "没有简介.."
       }}</span>
       <div class="card-actions justify-end">
-        <div class="badge badge-outline" v-for="tag in postData.tags">
-          {{ tag }}
+        <div class="badge badge-outline p-3" v-for="tag in postData.tags">
+          <RouterLink :to="'/tag/' + tag">{{ tag }}</RouterLink>
         </div>
       </div>
     </div>

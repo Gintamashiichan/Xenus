@@ -2,11 +2,18 @@
   <div class="select-none h-full flex flex-col">
     <NavBar />
   </div>
+  <h1 class="text-center text-4xl font-extrabold mb-8">Tags</h1>
   <div
     class="select-none h-full w-full flex flex-row flex-wrap justify-center"
-    v-if="posts"
+    v-if="tags"
   >
-    <Card class="w-1/4 m-4" v-for="i in $data.posts" :id="i.id" />
+    <div v-for="i in tags" class="p-5">
+      <RouterLink :to="`/tag/${i}`"
+        ><Buttons type="outline" class="rounded-full">{{
+          i
+        }}</Buttons></RouterLink
+      >
+    </div>
   </div>
   <div
     class="select-none h-full w-full flex flex-row flex-wrap justify-center"
@@ -19,24 +26,22 @@
 <script lang="ts">
 import NavBar from "../../components/NavBar.vue";
 import Buttons from "../../ui/Buttons.vue";
-import Card from "../../ui/Card.vue";
-import { getSortedPostsData } from "../../libs/posts";
-import type { Post } from "../../types/Posts";
+import { getTagList } from "../../libs/tags";
+import type { Tag } from "../../types/Tags";
 
 export default {
-  name: "Index",
+  name: "TagList",
   data() {
     return {
-      posts: new Array<Post>(),
+      tags: new Array<Tag>(),
     };
   },
   components: {
     NavBar,
     Buttons,
-    Card,
   },
   async mounted() {
-    this.posts.push(...(await getSortedPostsData()));
+    this.tags.push(...(await getTagList()));
   },
 };
 </script>
