@@ -14,9 +14,7 @@ node_js:
   - node
 
 os:
-  - linux
   - windows
-  - FreeBSD
 
 cache:
   directories:
