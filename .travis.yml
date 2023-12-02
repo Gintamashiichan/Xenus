@@ -1,7 +1,23 @@
 language: node_js #设置语言
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-13.2
+
+env:
+  - CXX=g++-13.2
+
 node_js:
   - node
+
+os:
+  - linux
+  - windows
+  - FreeBSD
+
 cache:
   directories:
     - node_modules #缓存依赖

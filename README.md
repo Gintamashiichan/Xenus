@@ -1,12 +1,14 @@
 <div align=center>
 
-> [![Xenus](./public/icon.png)](https://github.com/Gintamashiichan/Xenus)
+[![Xenus](./public/icon.png)](https://github.com/Gintamashiichan/Xenus)
 
-# Xenus
+<h1>Xenus</h1>
 
-> [![License](https://img.shields.io/github/license/Gintamashiichan/Xenus)](https://www.apache.org/licenses/LICENSE-2.0.html)
-> ![Build](https://app.travis-ci.com/Gintamashiichan/Xenus.svg?branch=master)
-> ![Version](https://img.shields.io/badge/node-%3E=18.16.0-yellow)
+[![License](https://img.shields.io/github/license/Gintamashiichan/Xenus)](https://www.apache.org/licenses/LICENSE-2.0.html)
+![Build](https://app.travis-ci.com/Gintamashiichan/Xenus.svg?branch=master)
+![Version](https://img.shields.io/badge/node-%3E=18.16.0-yellow)
+
+</div>
 
 ## Contribution
 
@@ -30,5 +32,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-</div>
