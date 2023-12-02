@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts">
-import NavBar from "../components/NavBar.vue";
+import NavBar from "./NavBar.vue";
 import Buttons from "../ui/Buttons.vue";
 import { getPostData } from "../libs/posts";
 import type { Post } from "../types/Posts";

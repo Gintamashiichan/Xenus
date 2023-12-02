@@ -18,8 +18,8 @@
 
 <script lang="ts">
 import NavBar from "../../components/NavBar.vue";
+import Card from "../../components/Card.vue";
 import Buttons from "../../ui/Buttons.vue";
-import Card from "../../ui/Card.vue";
 import { getSortedPostsData } from "../../libs/posts";
 import type { Post } from "../../types/Posts";
 
