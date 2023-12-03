@@ -29,10 +29,7 @@ Rookie Front-end Developer.
 Wanna know <a class="link no-underline hover:underline"><RouterLink to="/posts/about">more about me</RouterLink></a>?
             </pre>
             <a href="https://www.github.com/Gintamashiichan">
-              <img
-                src="../assets/github-mark.svg"
-                class="w-8 h-8 ease-in-out duration-300 hover:-translate-y-5 max-sm:mt-8"
-              />
+              <i class="fa-brands fa-github fa-2xl ease-in-out duration-300 hover:-translate-y-5 max-sm:mt-8"></i>
             </a>
           </div>
         </div>
