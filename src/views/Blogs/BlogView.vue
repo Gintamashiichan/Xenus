@@ -1,7 +1,4 @@
 <template>
-  <div class="select-none h-full flex flex-col">
-    <NavBar />
-  </div>
   <div
     class="select-none h-full w-full flex flex-col items-center overflow-hidden"
   >
@@ -13,7 +10,6 @@
   </div>
 </template>
 <script lang="ts">
-import NavBar from "../../components/NavBar.vue";
 import { getPostData } from "../../libs/posts";
 import { PostData } from "../../types/Posts";
 
@@ -23,9 +19,6 @@ export default {
     return {
       postData: {} as PostData,
     };
-  },
-  components: {
-    NavBar,
   },
   async mounted() {
     this.postData = await getPostData(this.$route.params.id as string);

@@ -1,7 +1,4 @@
 <template>
-  <div class="select-none h-full flex flex-col">
-    <NavBar />
-  </div>
   <div
     class="select-none h-full w-full flex flex-row flex-wrap justify-center"
     v-if="posts"
@@ -17,9 +14,7 @@
 </template>
 
 <script lang="ts">
-import NavBar from "../../components/NavBar.vue";
 import Card from "../../components/Card.vue";
-import Buttons from "../../ui/Buttons.vue";
 import { getSortedPostsData } from "../../libs/posts";
 import type { Post } from "../../types/Posts";
 
@@ -31,8 +26,6 @@ export default {
     };
   },
   components: {
-    NavBar,
-    Buttons,
     Card,
   },
   async mounted() {

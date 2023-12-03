@@ -7,9 +7,7 @@
       <ul class="menu menu-horizontal">
         <li v-for="nav in Navs" :key="nav.name">
           <a :href="nav.link" class="ml-6 font-black">
-            <i class="fa-solid" :class="[
-              `fa-${nav.icon}`
-            ]"></i>
+            <i class="fa-solid" :class="[`fa-${nav.icon}`]"></i>
             {{ nav.name }}
           </a>
         </li>
@@ -18,10 +16,7 @@
     <div class="drawer navbar-end">
       <input id="drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
-        <label
-          htmlFor="drawer"
-          class="btn btn-ghost drawer-button sm:hidden"
-        >
+        <label htmlFor="drawer" class="btn btn-ghost drawer-button sm:hidden">
           <i class="fa-solid fa-bars fa-2xl"></i>
         </label>
       </div>
@@ -34,9 +29,7 @@
         <ul class="menu p-4 w-64 min-h-full bg-base-100 text-base-content">
           <li v-for="nav in Navs" :key="nav.name">
             <a :href="nav.link" class="mt-8 text-xl font-black">
-              <i class="fa-solid" :class="[
-                `fa-${nav.icon}`
-              ]"></i>
+              <i class="fa-solid" :class="[`fa-${nav.icon}`]"></i>
               {{ nav.name }}
             </a>
           </li>
