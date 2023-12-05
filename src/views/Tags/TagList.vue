@@ -1,7 +1,4 @@
 <template>
-  <div class="select-none h-full flex flex-col">
-    <NavBar />
-  </div>
   <h1 class="text-center text-4xl font-extrabold mb-8">Tags</h1>
   <div
     class="select-none h-full w-full flex flex-row flex-wrap justify-center"
@@ -24,7 +21,6 @@
 </template>
 
 <script lang="ts">
-import NavBar from "../../components/NavBar.vue";
 import Buttons from "../../ui/Buttons.vue";
 import { getTagList } from "../../libs/tags";
 import type { Tag } from "../../types/Tags";
@@ -37,7 +33,6 @@ export default {
     };
   },
   components: {
-    NavBar,
     Buttons,
   },
   async mounted() {

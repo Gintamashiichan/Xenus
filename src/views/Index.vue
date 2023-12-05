@@ -1,17 +1,10 @@
 <script lang="ts">
-import NavBar from "../components/NavBar.vue";
-import Buttons from "../ui/Buttons.vue";
 export default {
   name: "Index",
-  components: {
-    NavBar,
-    Buttons,
-  },
 };
 </script>
 <template>
   <div class="select-none h-full flex flex-col">
-    <NavBar />
     <div class="flex-grow mt-48 max-sm:mt-16">
       <div class="flex w-full max-w-screen-lg mx-auto">
         <div class="w-1/5 mx-auto max-md:hidden">
@@ -29,10 +22,9 @@ Rookie Front-end Developer.
 Wanna know <a class="link no-underline hover:underline"><RouterLink to="/posts/about">more about me</RouterLink></a>?
             </pre>
             <a href="https://www.github.com/Gintamashiichan">
-              <img
-                src="../assets/github-mark.svg"
-                class="w-8 h-8 ease-in-out duration-300 hover:-translate-y-5 max-sm:mt-8"
-              />
+              <i
+                class="fa-brands fa-github fa-2xl ease-in-out duration-300 hover:-translate-y-5 max-sm:mt-8"
+              ></i>
             </a>
           </div>
         </div>

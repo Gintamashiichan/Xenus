@@ -6,6 +6,7 @@ import PostList from "../views/Blogs/PostList.vue";
 import BlogView from "../views/Blogs/BlogView.vue";
 import TagList from "../views/Tags/TagList.vue";
 import TagClassification from "../views/Tags/TagClassification.vue";
+import NotFoundView from "../views/Errors/NotFoundView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -33,6 +34,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "Tag",
     component: TagClassification,
   },
+  { 
+    path: '/:pathMatch(.*)', 
+    component: NotFoundView
+  }
+  
 ];
 
 const router = createRouter({

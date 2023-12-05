@@ -1,7 +1,4 @@
 <template>
-  <div class="select-none h-full flex flex-col">
-    <NavBar />
-  </div>
   <h1 class="text-center text-3xl font-extrabold mb-8">
     Articles under "{{ $route.params.tag }}" tag
   </h1>
@@ -17,7 +14,6 @@
 </template>
 
 <script lang="ts">
-import NavBar from "../../components/NavBar.vue";
 import Buttons from "../../ui/Buttons.vue";
 import { getPostsByTag } from "../../libs/tags";
 
@@ -29,7 +25,6 @@ export default {
     };
   },
   components: {
-    NavBar,
     Buttons,
   },
   async mounted() {
