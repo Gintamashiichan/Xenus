@@ -1,16 +1,9 @@
 import axios from "axios";
 
 import matter from "gray-matter";
-import { marked, MarkedExtension } from "marked";
+import { marked } from "marked";
 
-// Extentions
-import markedKatex from "marked-katex-extension";
-import { markedEmoji } from "marked-emoji";
-import markedAdmonition from "marked-admonition-extension";
-
-import { Octokit } from "@octokit/rest";
-
-import "marked-admonition-extension/dist/index.css";
+import { getEmojis, getMarkedAdmonition, getMarkedKatex } from './extentions'
 
 export async function getSortedPostsData() {
   // Get file names under /posts
@@ -63,20 +56,10 @@ export async function getPostData(id: string) {
   const res = await axios.get(`/posts/${id}.md`);
   const matterResult = matter(res.data);
 
-  // Use remark to convert markdown into HTML string
-  const octokit = new Octokit();
-  // Get all the emojis available to use on GitHub.
-  const resOctokit = await octokit.rest.emojis.get();
-  const emojis = resOctokit.data;
-
-  const octokitOptions = {
-    emojis,
-    unicode: false,
-  };
   marked
-    .use(markedEmoji(octokitOptions))
-    .use(markedKatex())
-    .use(markedAdmonition as MarkedExtension);
+    .use(await getEmojis())
+    .use(getMarkedKatex())
+    .use(getMarkedAdmonition());
 
   const contentHtml = await marked(matterResult.content, {
     async: true,
