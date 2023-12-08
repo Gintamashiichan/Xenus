@@ -57,16 +57,18 @@ export async function getPostData(id: string) {
   const matterResult = matter(res.data);
 
   marked
-  .use(await getEmojis())
-  .use({
-    extensions: [{
-      name: "emoji",
-      renderer(token) {
-        return `<img class="marked-emoji" alt="${token.name}" src="${token.emoji}" height="32" width="32" style="display:inline;">` ;
-      }
-    }]
-  })
-  .use(getMarkedKatex());
+    .use(await getEmojis())
+    .use({
+      extensions: [
+        {
+          name: "emoji",
+          renderer(token) {
+            return `<img class="marked-emoji" alt="${token.name}" src="${token.emoji}" height="32" width="32" style="display:inline;">`;
+          },
+        },
+      ],
+    })
+    .use(getMarkedKatex());
 
   const contentHtml = await marked(matterResult.content, {
     async: true,
