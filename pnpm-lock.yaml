@@ -54,9 +54,6 @@ devDependencies:
   marked:
     specifier: ^10.0.0
     version: 10.0.0
-  marked-admonition-extension:
-    specifier: ^0.0.4
-    version: 0.0.4
   marked-emoji:
     specifier: ^1.3.0
     version: 1.3.0(marked@10.0.0)
@@ -598,19 +595,9 @@ packages:
       '@types/mdurl': 1.0.5
     dev: false
 
-  /@types/marked@4.3.2:
-    resolution: {integrity: sha512-a79Yc3TOk6dGdituy8hmTTJXjOkZ7zsFYV10L337ttq/rec8lRMDBpV7fL3uLx6TgbFCa5DU/h8FmIBQPSbU0w==}
-    dev: true
-
   /@types/mdurl@1.0.5:
     resolution: {integrity: sha512-6L6VymKTzYSrEf4Nev4Xa1LCHKrlTlYCBMTlQKFuddo1CvQcE52I0mwfOJayueUC7MJuXOeHTcIU683lzd0cUA==}
     dev: false
-
-  /@types/node@18.18.13:
-    resolution: {integrity: sha512-vXYZGRrSCreZmq1rEjMRLXJhiy8MrIeVasx+PCVlP414N7CJLHnMf+juVvjdprHyH+XRy3zKZLHeNueOpJCn0g==}
-    dependencies:
-      undici-types: 5.26.5
-    dev: true
 
   /@types/node@20.9.0:
     resolution: {integrity: sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==}
@@ -1713,13 +1700,6 @@ packages:
       mdurl: 1.0.1
       uc.micro: 1.0.6
     dev: false
-
-  /marked-admonition-extension@0.0.4:
-    resolution: {integrity: sha512-dGVTDy0G5y2CvMdOEltFTy+7l2JGJhcHoLbU3hfNRSXDme/7qnRHag+d3rUHMJbl278kOzdalegCJ/PLcEUWUQ==}
-    dependencies:
-      '@types/marked': 4.3.2
-      '@types/node': 18.18.13
-    dev: true
 
   /marked-emoji@1.3.0(marked@10.0.0):
     resolution: {integrity: sha512-3nr4mykjQmCOvPdnI9078gxVghDeqBgRctAsiTLoBjc4XuHGaiesntMIFZSGBkG731DvMTHMZtQJTXyIdZUZUA==}

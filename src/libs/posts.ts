@@ -3,7 +3,7 @@ import axios from "axios";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-import { getEmojis, getMarkedAdmonition, getMarkedKatex } from './extentions'
+import { getEmojis, getMarkedKatex } from "./extentions";
 
 export async function getSortedPostsData() {
   // Get file names under /posts
@@ -56,10 +56,7 @@ export async function getPostData(id: string) {
   const res = await axios.get(`/posts/${id}.md`);
   const matterResult = matter(res.data);
 
-  marked
-    .use(await getEmojis())
-    .use(getMarkedKatex())
-    .use(getMarkedAdmonition());
+  marked.use(await getEmojis()).use(getMarkedKatex());
 
   const contentHtml = await marked(matterResult.content, {
     async: true,
