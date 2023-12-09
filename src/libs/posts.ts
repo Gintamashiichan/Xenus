@@ -11,21 +11,23 @@ export async function getSortedPostsData() {
   const files = import.meta.glob("../../public/posts/*.md");
 
   for (const key in files) {
-    const filename = key.match(/\/([^/]+)\.[a-z]+$/);
-    if (filename !== null) {
-      const res = await axios.get(`/posts/${filename[1]}.md`);
-      const matterResult = matter(res.data);
-      const postData = {
-        id: filename[1],
-        ...(matterResult.data as {
-          date: string;
-          title: string;
-          description: string | null;
-          tags: string[] | null;
-          thumbnail: string | null;
-        }),
-      };
-      allPostsData.push(postData);
+    if (Object.prototype.hasOwnProperty.call(files, key)) { //不知道为什么这里用Obj
+      const filename = key.match(/\/([^/]+)\.[a-z]+$/);
+      if (filename !== null) {
+        const res = await axios.get(`/posts/${filename[1]}.md`);
+        const matterResult = matter(res.data);
+        const postData = {
+          id: filename[1],
+          ...(matterResult.data as {
+            date: string;
+            title: string;
+            description: string | null;
+            tags: string[] | null;
+            thumbnail: string | null;
+          }),
+        };
+        allPostsData.push(postData);
+      }
     }
   }
   return allPostsData.sort((a, b) => {
@@ -40,7 +42,7 @@ export async function getSortedPostsData() {
 export function getAllPostIds() {
   const files = import.meta.glob("../../public/posts/*.md");
 
-  for (const key in files) {
+  for (const key in Object.keys(files)) {
     const filename = key.match(/\/([^/]+)\.[a-z]+$/);
     if (filename !== null) {
       return {
@@ -49,6 +51,7 @@ export function getAllPostIds() {
         },
       };
     }
+    return null;
   }
 }
 
