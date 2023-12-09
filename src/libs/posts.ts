@@ -11,7 +11,8 @@ export async function getSortedPostsData() {
   const files = import.meta.glob("../../public/posts/*.md");
 
   for (const key in files) {
-    if (Object.prototype.hasOwnProperty.call(files, key)) { //不知道为什么这里用Obj
+    if (Object.prototype.hasOwnProperty.call(files, key)) {
+      //不知道为什么这里用Obj
       const filename = key.match(/\/([^/]+)\.[a-z]+$/);
       if (filename !== null) {
         const res = await axios.get(`/posts/${filename[1]}.md`);
