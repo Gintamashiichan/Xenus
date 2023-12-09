@@ -34,11 +34,10 @@ const routes: Array<RouteRecordRaw> = [
     name: "Tag",
     component: TagClassification,
   },
-  { 
-    path: '/:pathMatch(.*)', 
-    component: NotFoundView
-  }
-  
+  {
+    path: "/:pathMatch(.*)",
+    component: NotFoundView,
+  },
 ];
 
 const router = createRouter({
